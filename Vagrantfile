@@ -21,6 +21,8 @@ Vagrant::Config.run do |config|
 
   # Install make
   config.vm.provision :shell, :inline => "apt-get install make"
+  # Install older version of mixlib-shellout gem (gem install chef fails otherwise)
+  config.vm.provision :shell, :inline => "gem install mixlib-shellout --version 1.4.0"
   # Upgrade chef
   config.vm.provision :shell, :inline => "gem install chef --version 10.16.4 --no-rdoc --no-ri --conservative"
   # Enable and configure the chef solo provisioner
